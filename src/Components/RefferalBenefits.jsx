@@ -20,7 +20,7 @@ import {
 import { data } from "../data/courseData";
 import { blue } from "@mui/material/colors";
 
-const RefferalBenefits = () => {
+const RefferalBenefits = ({ handleToggle }) => {
 	const [selectedOption, setSelectedOption] = useState(0);
 
 	return (
@@ -88,7 +88,11 @@ const RefferalBenefits = () => {
 				display={"flex"}
 				justifyContent={"center"}
 				alignContent={"center"}>
-				<Button variant='contained'>Refer Now</Button>
+				<Button
+					variant='contained'
+					onClick={handleToggle}>
+					Refer Now
+				</Button>
 			</Box>
 		</Box>
 	);

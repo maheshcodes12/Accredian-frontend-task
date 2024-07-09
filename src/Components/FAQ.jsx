@@ -110,13 +110,6 @@ const FAQ = () => {
 					))}
 				</Box>
 			</Box>
-			<Box
-				mt={4}
-				display={"flex"}
-				justifyContent={"center"}
-				alignContent={"center"}>
-				<Button variant='contained'>Refer Now</Button>
-			</Box>
 		</Box>
 	);
 };

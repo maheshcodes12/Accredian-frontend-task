@@ -1,10 +1,10 @@
 import { Box, buttonClasses, Typography, Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 
-const HowDoIRefer = () => {
+const HowDoIRefer = ({ handleToggle }) => {
 	return (
 		<Box
 			py={4}
@@ -102,7 +102,11 @@ const HowDoIRefer = () => {
 					display={"flex"}
 					justifyContent={"center"}
 					alignContent={"center"}>
-					<Button variant='contained'>Refer Now</Button>
+					<Button
+						variant='contained'
+						onClick={handleToggle}>
+						Refer Now
+					</Button>
 				</Box>
 			</Box>
 		</Box>

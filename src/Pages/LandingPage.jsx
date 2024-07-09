@@ -1,12 +1,22 @@
 import React, { useMemo, useState, useRef } from "react";
 import Header from "../Components/Header";
-import { Box, Typography, Tabs, Tab } from "@mui/material";
+import {
+	Box,
+	Typography,
+	Tabs,
+	Tab,
+	Dialog,
+	Button,
+	DialogContent,
+	DialogActions,
+} from "@mui/material";
 import HeroSection from "../Components/HeroSection";
 import HowDoIRefer from "../Components/HowDoIRefer";
 import RefferalBenefits from "../Components/RefferalBenefits";
 import FAQ from "../Components/FAQ";
 import GetInTouch from "../Components/GetInTouch";
 import Footer from "../Components/Footer";
+import ReferPopup from "../Components/ReferPopup";
 
 const LandingPage = () => {
 	const [open, setOpen] = useState(false);
@@ -29,6 +39,12 @@ const LandingPage = () => {
 		}
 	};
 
+	const handleToggle = () => {
+		console.log("first");
+		setOpen(!open);
+		console.log(open);
+	};
+
 	const tabData = [
 		{ label: "Refer", content: "Content for Tab 1" },
 		{ label: "Benefits", content: "Content for Tab 2" },
@@ -36,17 +52,10 @@ const LandingPage = () => {
 		{ label: "Support", content: "Content for Tab 3" },
 	];
 
-	const heroSection = useMemo(() => {
-		return (
-			<HeroSection
-				value={value}
-				open={open}
-			/>
-		);
-	}, [value]);
-
 	return (
-		<Box maxWidth={"100vw"}>
+		<Box
+			maxWidth={"100vw"}
+			position='relative'>
 			<Box
 				height={40}
 				width='full'
@@ -71,13 +80,15 @@ const LandingPage = () => {
 						/>
 					))}
 				</Tabs>
-				<Box sx={{ p: 3 }}>{heroSection}</Box>
+				<Box sx={{ p: 3 }}>
+					<HeroSection handleToggle={handleToggle} />
+				</Box>
 			</Box>
 			<Box ref={ReferRef}>
-				<HowDoIRefer open={open} />
+				<HowDoIRefer handleToggle={handleToggle} />
 			</Box>
 			<Box ref={BenefitsRef}>
-				<RefferalBenefits open={open} />
+				<RefferalBenefits handleToggle={handleToggle} />
 			</Box>
 			<Box ref={FAQRef}>
 				<FAQ />
@@ -88,6 +99,24 @@ const LandingPage = () => {
 			<Box>
 				<Footer />
 			</Box>
+			<Dialog
+				width='100vw'
+				height='100vh'
+				open={open}
+				onClose={handleToggle}
+				fullWidth
+				maxWidth='md'>
+				<DialogContent>
+					<ReferPopup />
+				</DialogContent>
+				<DialogActions>
+					<Button
+						onClick={handleToggle}
+						color='primary'>
+						Close
+					</Button>
+				</DialogActions>
+			</Dialog>
 		</Box>
 	);
 };

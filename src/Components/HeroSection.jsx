@@ -1,8 +1,8 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Box, width } from "@mui/system";
 import { Button, Typography } from "@mui/material";
 
-const HeroSection = ({ open }) => {
+const HeroSection = ({ handleToggle }) => {
 	const component = useMemo(() => {
 		return (
 			<Box
@@ -95,7 +95,11 @@ const HeroSection = ({ open }) => {
 						<Typography color='primary'>Rs. 15,000</Typography>
 					</h3>
 					<Box>
-						<Button variant='contained'>Refer Now</Button>
+						<Button
+							variant='contained'
+							onClick={handleToggle}>
+							Refer Now
+						</Button>
 					</Box>
 				</Box>
 
