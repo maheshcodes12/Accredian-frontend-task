@@ -18,14 +18,16 @@ import {
 import { Link as LinkRRD } from "react-router-dom";
 import { loginApi, signupApi } from "../Services/Auth";
 import { getReferalDataApi, referApi } from "../Services/Refer";
+import { useNavigate } from "react-router-dom";
 
-const ReferPopup = () => {
+const ReferPopup = ({ handleToggle }) => {
 	const [openSnackbar, setOpenSnackbar] = React.useState(false);
 	const [openTextField, setOpenTextField] = React.useState(false);
 	const [openHistory, setOpenHistory] = React.useState(false);
 	const [code, setCode] = useState();
 	const [referrer, setReferrer] = useState();
 	const [refdata, setRefData] = useState();
+	const navigate = useNavigate();
 
 	const handleCopyClick = () => {
 		navigator.clipboard.writeText(code);
@@ -50,6 +52,7 @@ const ReferPopup = () => {
 
 	const handleSubmit = async () => {
 		await referApi(referrer);
+		handleToggle();
 	};
 
 	return (

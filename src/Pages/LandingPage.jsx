@@ -107,7 +107,7 @@ const LandingPage = () => {
 				fullWidth
 				maxWidth='md'>
 				<DialogContent>
-					<ReferPopup />
+					<ReferPopup handleToggle={handleToggle} />
 				</DialogContent>
 				<DialogActions>
 					<Button

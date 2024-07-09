@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { Link as LinkRRD } from "react-router-dom";
 import { loginApi, signupApi } from "../Services/Auth";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
 	const [isLogin, setIsLogin] = useState(true); // State to toggle between login and signup
@@ -18,6 +19,8 @@ const LoginForm = () => {
 		name: "",
 		password: "",
 	});
+
+	const navigate = useNavigate();
 	const [formErrors, setFormErrors] = useState({
 		email: "",
 		name: "",
@@ -46,9 +49,15 @@ const LoginForm = () => {
 
 		if (Object.keys(errors).length === 0) {
 			if (isLogin) {
-				await loginApi(formData.email, formData.password);
+				await loginApi(formData.email, formData.password).then(() => {
+					navigate("/");
+				});
 			} else {
-				await signupApi(formData.name, formData.email, formData.password);
+				await signupApi(formData.name, formData.email, formData.password).then(
+					() => {
+						navigate("/");
+					}
+				);
 			}
 		}
 	};
