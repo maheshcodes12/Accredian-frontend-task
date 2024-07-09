@@ -4,7 +4,6 @@ import "./App.css";
 import LandingPage from "./Pages/LandingPage";
 import LoginForm from "./Pages/LoginForm";
 import NotFound from "./Pages/NotFound";
-import Trial from "./Pages/Trial";
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -20,10 +19,7 @@ function App() {
 					path='/login'
 					element={<LoginForm />}
 				/>
-				<Route
-					path='/trial'
-					element={<Trial />}
-				/>
+
 				<Route
 					path='/*'
 					element={<NotFound />}
