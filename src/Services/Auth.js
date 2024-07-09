@@ -33,6 +33,7 @@ export const loginApi = async (email, password) => {
 		if (response.data?.success) {
 			localStorage.setItem("token", response.data.token);
 			localStorage.setItem("email", response.data.email);
+			localStorage.setItem("id", response.data.id);
 			return true;
 		}
 

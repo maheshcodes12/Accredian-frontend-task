@@ -1,10 +1,10 @@
 import axios from "axios";
-// import { notifications } from "@mantine/notifications";
 
 const backend_url = import.meta.env.VITE_BACKEND_URI;
 
 export const referApi = async (code) => {
 	const email = localStorage.getItem("email");
+
 	try {
 		const response = await axios.post(`${backend_url}/refer`, {
 			id_of_referrer: code,
@@ -23,6 +23,7 @@ export const referApi = async (code) => {
 };
 
 export const getReferalDataApi = async () => {
+	const email = localStorage.getItem("email");
 	try {
 		const response = await axios.get(`${backend_url}/refer/getreferals`, {
 			params: {
@@ -30,9 +31,8 @@ export const getReferalDataApi = async () => {
 			},
 		});
 
-		if (response.data.success) {
-			console.log(response);
-			return true;
+		if (response.data?.success) {
+			return response.data.data;
 		}
 
 		return false;

@@ -48,15 +48,15 @@ const RefferalBenefits = ({ handleToggle }) => {
 				<Box sx={{ width: 240, mr: 2 }}>
 					<List component='nav'>
 						{data.map((course, index) => (
-							<>
+							<Box key={index}>
 								<ListItem
 									sx={{ cursor: "pointer" }}
-									key={course.type}
+									key={index}
 									onClick={() => setSelectedOption(index)}>
 									<ListItemText primary={course.type} />
 								</ListItem>
 								<Divider />
-							</>
+							</Box>
 						))}
 					</List>
 				</Box>
